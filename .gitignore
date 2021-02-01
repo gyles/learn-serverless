@@ -108,3 +108,14 @@ dist
 
 # Thumbnails
 ._*
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+
+# Webpack
+.webpack/
