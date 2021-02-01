@@ -1,0 +1,111 @@
+openapi: 3.0.0
+components:
+  schemas:
+    ErrorResponse:
+      title: Error Schema
+      type: object
+      properties:
+        message:
+          type: string
+    CreateAuditDocumentRequest:
+      type: object
+      properties:
+        audit:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  created:
+                    type: string
+                  userId:
+                    type: string
+                  action:
+                    type: string
+                  url:
+                    type: string
+                  payload:
+                    type: object
+                    properties:
+                      itemId:
+                        type: string
+                      amount:
+                        type: integer
+                    required:
+                      - itemId
+                      - amount
+                required:
+                  - created
+                  - userId
+                  - action
+                  - url
+              default: []
+          required:
+            - items
+      required:
+        - audit
+    CreateAuditDocumentResponse:
+      type: object
+      properties:
+        audit:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  created:
+                    type: string
+                  userId:
+                    type: string
+                  action:
+                    type: string
+                  url:
+                    type: string
+                  payload:
+                    type: object
+                    properties:
+                      itemId:
+                        type: string
+                      amount:
+                        type: integer
+                    required:
+                      - itemId
+                      - amount
+                required:
+                  - created
+                  - userId
+                  - action
+                  - url
+              default: []
+          required:
+            - items
+      required:
+        - audit
+  securitySchemes: {}
+info:
+  title: Audit API
+  description: Audit API
+  version: '1'
+paths:
+  /audit:
+    post:
+      operationId: audit
+      summary: Create Audit
+      description: Creates an audit document
+      responses:
+        '201':
+          description: Audit document has been created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAuditDocumentResponse'
+        '500':
+          description: An error occurred while processing request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

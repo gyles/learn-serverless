@@ -1,0 +1,37 @@
+documentation:
+  version: '1'
+  title: 'Audit API'
+  description: 'Audit API'
+  models:
+    - name: "ErrorResponse"
+      description: "Generic error response"
+      contentType: "application/json"
+      schema: ${file(src/models/error-response.json)}
+    - name: "CreateAuditDocumentRequest"
+      description: "Create an audit document"
+      contentType: "application/json"
+      schema: ${file(src/models/create-audit-entry-request.json)}
+    - name: "CreateAuditDocumentResponse"
+      description: "Create audit document response"
+      contentType: "application/json"
+      schema: ${file(src/models/create-audit-entry-response.json)}
+
+endpoints:
+  createAuditDocument:
+    summary: "Create Audit"
+    description: "Creates an audit document"
+    requestBody:
+      description: "Audit information object"
+    requestModels:
+      application/json: "CreateAuditDocumentRequest"
+    methodResponses:
+      - statusCode: 201
+        responseBody:
+          description: "Audit document has been created"
+        responseModels:
+          application/json: "CreateAuditDocumentResponse"
+      - statusCode: 500
+        responseBody:
+          description: "An error occurred while processing request"
+        responseModels:
+          application/json: "ErrorResponse"

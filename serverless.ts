@@ -9,9 +9,10 @@ const serverlessConfiguration: AWS = {
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: true
-    }
+    },
+    documentation: '${file(serverless.doc.yaml):documentation}'
   },
-  plugins: ['serverless-webpack'],
+  plugins: ['serverless-webpack', 'serverless-openapi-documentation'],
   provider: {
     name: 'aws',
     region: 'us-east-1',

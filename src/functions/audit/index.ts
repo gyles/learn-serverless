@@ -11,7 +11,8 @@ export default {
           schema: {
             'application/json': schema
           }
-        }
+        },
+        documentation: '${file(serverless.doc.yaml):endpoints.createAuditDocument}'
       }
     }
   ]
