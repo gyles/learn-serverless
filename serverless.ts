@@ -14,6 +14,7 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-webpack'],
   provider: {
     name: 'aws',
+    region: 'us-east-1',
     runtime: 'nodejs12.x',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -23,6 +24,7 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     },
     lambdaHashingVersion: '20201221',
+    profile: 'learn'
   },
   functions: { hello }
 }
