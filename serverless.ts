@@ -1,9 +1,9 @@
 import type { AWS } from '@serverless/typescript';
 
-import { audit } from './src/functions';
+import { log } from './src/functions';
 
 const serverlessConfiguration: AWS = {
-  service: 'audit-storage-service',
+  service: 'log-service',
   frameworkVersion: '2',
   custom: {
     webpack: {
@@ -27,7 +27,7 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
     profile: 'learn'
   },
-  functions: { audit }
+  functions: { log }
 }
 
 module.exports = serverlessConfiguration;

@@ -1,12 +1,12 @@
 {
-  "name": "audit-storage-service",
+  "name": "log-service",
   "version": "1.0.0",
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
     "deploy": "npx sls deploy",
-    "test-local": "npx sls invoke local -f audit --path src/functions/audit/mock.json",
-    "generate-api-documentation": "serverless openapi generate --format yaml --output openapi.yaml"
+    "test-local": "npx sls invoke local -f log --path src/functions/log/mock.json",
+    "generate-openapi": "serverless openapi generate --format yaml --output documentation/openapi.yaml"
   },
   "dependencies": {
     "@middy/core": "^1.5.0",

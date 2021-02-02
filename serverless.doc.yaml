@@ -1,35 +1,35 @@
 documentation:
   version: '1'
-  title: 'Audit API'
-  description: 'Audit API'
+  title: 'Log Service API'
+  description: 'APIs for storing and retrieving logs'
   models:
     - name: "ErrorResponse"
       description: "Generic error response"
       contentType: "application/json"
       schema: ${file(src/models/error-response.json)}
-    - name: "CreateAuditDocumentRequest"
-      description: "Create an audit document"
+    - name: "CreateLogRequest"
+      description: "Create a log entry"
       contentType: "application/json"
-      schema: ${file(src/models/create-audit-entry-request.json)}
-    - name: "CreateAuditDocumentResponse"
-      description: "Create audit document response"
+      schema: ${file(src/models/create-log-request.json)}
+    - name: "CreateLogResponse"
+      description: "Create create entry response"
       contentType: "application/json"
-      schema: ${file(src/models/create-audit-entry-response.json)}
+      schema: ${file(src/models/create-log-response.json)}
 
 endpoints:
-  createAuditDocument:
-    summary: "Create Audit"
-    description: "Creates an audit document"
+  createLog:
+    summary: "Create Log"
+    description: "Creates a log entry"
     requestBody:
-      description: "Audit information object"
+      description: "Log information object"
     requestModels:
-      application/json: "CreateAuditDocumentRequest"
+      application/json: "CreateLogRequest"
     methodResponses:
       - statusCode: 201
         responseBody:
-          description: "Audit document has been created"
+          description: "Log entry has been created"
         responseModels:
-          application/json: "CreateAuditDocumentResponse"
+          application/json: "CreateLogResponse"
       - statusCode: 500
         responseBody:
           description: "An error occurred while processing request"

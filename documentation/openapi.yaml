@@ -7,7 +7,7 @@ components:
       properties:
         message:
           type: string
-    CreateAuditDocumentRequest:
+    CreateLogRequest:
       type: object
       properties:
         audit:
@@ -46,7 +46,7 @@ components:
             - items
       required:
         - audit
-    CreateAuditDocumentResponse:
+    CreateLogResponse:
       type: object
       properties:
         audit:
@@ -87,22 +87,22 @@ components:
         - audit
   securitySchemes: {}
 info:
-  title: Audit API
-  description: Audit API
+  title: Log Service API
+  description: APIs for storing and retrieving logs
   version: '1'
 paths:
-  /audit:
+  /log:
     post:
-      operationId: audit
-      summary: Create Audit
-      description: Creates an audit document
+      operationId: log
+      summary: Create Log
+      description: Creates a log entry
       responses:
         '201':
-          description: Audit document has been created
+          description: Log entry has been created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateAuditDocumentResponse'
+                $ref: '#/components/schemas/CreateLogResponse'
         '500':
           description: An error occurred while processing request
           content:

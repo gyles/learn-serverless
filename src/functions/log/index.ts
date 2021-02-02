@@ -6,13 +6,13 @@ export default {
     {
       http: {
         method: 'post',
-        path: 'audit',
+        path: 'log',
         request: {
           schema: {
             'application/json': schema
           }
         },
-        documentation: '${file(serverless.doc.yaml):endpoints.createAuditDocument}'
+        documentation: '${file(serverless.doc.yaml):endpoints.createLog}'
       }
     }
   ]
