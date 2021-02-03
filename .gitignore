@@ -119,3 +119,6 @@ dist
 
 # Webpack
 .webpack/
+
+# Database config
+src/configuration/mysql-config.ts

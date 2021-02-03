@@ -17,3 +17,5 @@ export default {
     }
   ]
 }
+
+export { default as app } from '.';

@@ -5,21 +5,22 @@
   "main": "serverless.ts",
   "scripts": {
     "deploy": "npx sls deploy",
-    "test-local": "npx sls invoke local -f log --path src/functions/log/mock.json",
+    "test-local": "npx sls invoke local -f app --path src/app/mock.json",
     "generate-openapi": "serverless openapi generate --format yaml --output documentation/openapi.yaml"
   },
   "dependencies": {
-    "@middy/core": "^1.5.0",
-    "@middy/http-json-body-parser": "^1.5.0",
+    "@middy/core": "^1.5.2",
+    "@middy/http-json-body-parser": "^1.5.2",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.16.0",
     "@types/aws-lambda": "^8.10.64",
-    "@types/node": "^14.14.6",
+    "@types/node": "^14.14.22",
     "fork-ts-checker-webpack-plugin": "^6.0.0",
     "json-schema-to-ts": "^1.4.1",
     "serverless": "^2.16.0",
+    "serverless-mysql": "^1.5.4",
     "serverless-openapi-documentation": "^0.4.0",
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^8.0.10",
