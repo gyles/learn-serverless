@@ -16,6 +16,11 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     region: 'us-east-1',
     runtime: 'nodejs12.x',
+    iamRoleStatements: [{
+      Effect: 'Allow',
+      Action: ['ec2:*'],
+      Resource: '*'
+    }],
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
