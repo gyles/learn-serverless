@@ -121,4 +121,4 @@ dist
 .webpack/
 
 # Database config
-src/configuration/mysql-config.ts
+src/app/configuration/mysql-config.ts
