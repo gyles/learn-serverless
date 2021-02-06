@@ -6,15 +6,15 @@ documentation:
     - name: "ErrorResponse"
       description: "Generic error response"
       contentType: "application/json"
-      schema: ${file(src/models/error-response.json)}
+      schema: ${file(documentation/models/error-response.json)}
     - name: "CreateLogRequest"
       description: "Create a log entry"
       contentType: "application/json"
-      schema: ${file(src/models/create-log-request.json)}
+      schema: ${file(documentation/models/create-log-request.json)}
     - name: "CreateLogResponse"
       description: "Create create entry response"
       contentType: "application/json"
-      schema: ${file(src/models/create-log-response.json)}
+      schema: ${file(documentation/models/create-log-response.json)}
 
 endpoints:
   createLog:

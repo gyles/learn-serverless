@@ -1,0 +1,8 @@
+{
+  "headers": {
+    "Accept": "*/*"
+  },
+  "queryStringParameters": {
+    "q": "userId==\"d3f91f3f-5740-4c26-ae18-d823fbd6b37e\""
+  }
+}

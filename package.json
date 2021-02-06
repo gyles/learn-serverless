@@ -5,7 +5,8 @@
   "main": "serverless.ts",
   "scripts": {
     "deploy": "npx sls deploy",
-    "test-local": "npx sls invoke local -f app --path src/app/mock.json",
+    "test-find": "npx sls invoke local -f find --path src/mocks/find-mock.json",
+    "test-create": "npx sls invoke local -f create --path src/mocks/new-mock.json",
     "generate-openapi": "serverless openapi generate --format yaml --output documentation/openapi.yaml"
   },
   "dependencies": {

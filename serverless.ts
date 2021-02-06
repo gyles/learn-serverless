@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import { app } from './src/app';
+import { functions } from './src/app';
 
 const serverlessConfiguration: AWS = {
   service: 'log-service',
@@ -27,11 +27,16 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      MYSQL_DB_NAME: "MYSQL_DB_NAME",
+      MYSQL_DB_HOST: "MYSQL_DB_HOST",
+      MYSQL_DB_PORT: "MYSQL_DB_PORT",
+      MYSQL_DB_USER: "MYSQL_DB_USER",
+      MYSQL_DB_PASS: "MYSQL_DB_PASS"
     },
     lambdaHashingVersion: '20201221',
     profile: 'learn'
   },
-  functions: { app }
+  functions: functions
 }
 
 module.exports = serverlessConfiguration;
