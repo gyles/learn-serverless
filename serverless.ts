@@ -1,10 +1,11 @@
 import type { AWS } from '@serverless/typescript';
-import { functions } from './src/app';
+import schema from "./src/app/schema";
 
 const serverlessConfiguration: AWS = {
   service: 'log-service',
   frameworkVersion: '2',
   custom: {
+    poolName: 'demo-user-pool',
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: true
@@ -16,6 +17,10 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     region: 'us-east-1',
     runtime: 'nodejs12.x',
+    vpc: {
+      securityGroupIds: [ 'sg-a95ddfa2', 'sg-0e1cdee3981921207' ],
+      subnetIds: [ 'subnet-e3f163c2', 'subnet-15e8a61b' ]
+    },
     iamRoleStatements: [{
       Effect: 'Allow',
       Action: ['ec2:*'],
@@ -36,7 +41,39 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
     profile: 'learn'
   },
-  functions: functions
+  functions: {
+    find: {
+      handler: 'src/app/handler.findLogsFunction',
+      events: [{
+          http: {
+            method: 'get',
+            path: 'log',
+            authorizer: {
+              arn: 'arn:aws:cognito-idp:us-east-1:748917978460:userpool/us-east-1_wUKqleNTb',
+              scopes: [ 'https://fnrgjwmodo.auth.us-east-1.amazoncognito.com/log.read' ]
+            }
+          }
+        }],
+    },
+    create: {
+      handler: 'src/app/handler.createLogFunction',
+      events: [{
+          http: {
+            method: 'post',
+            path: 'log',
+            request: {
+              schema: {
+                'application/json': schema
+              }
+            },
+            authorizer: {
+              arn: 'arn:aws:cognito-idp:us-east-1:748917978460:userpool/us-east-1_wUKqleNTb',
+              scopes: [ 'https://fnrgjwmodo.auth.us-east-1.amazoncognito.com/log.write' ]
+            }
+          }
+        }]
+    }
+  }
 }
 
 module.exports = serverlessConfiguration;
